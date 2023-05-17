@@ -6,7 +6,7 @@
   "scripts": {
     "publicar": "npm install && npm run codeMirror && npm run css && npm run copiarWind",
     "publicarLinux": "npm install && npm run codeMirror && npm run css && npm run copiarLinux",
-    "copiarLinux": "mkdir -p ./dist/img && mkdir -p ./dist/js && cp -R ./img/* ./dist/img/* && cp -R ./index.html ./dist/* && cp -R ./js/*.js ./dist/js/*",
+    "copiarLinux": "mkdir -p ./dist/img && mkdir -p ./dist/js && cp -R ./img/* ./dist/img/* && cp -R ./index.html ./dist/* && cp -R ./js/* ./dist/js/*",
     "copiarWind" :"xcopy img\\* dist\\img\\* && xcopy index.html dist\\* && xcopy js\\*.js dist\\js\\*",
     "codeMirror": "rollup -c",
     "css": "sass styles/general.scss:dist/styles/general.css styles/estiloMenu.scss:dist/styles/estiloMenu.css "
