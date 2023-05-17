@@ -1,0 +1,77 @@
+$colores :(
+    "principalOscuro" : #0C0C0D,
+    "principalClaro" : #FFFFFF,
+    "principalColor" : #18F276,
+    "secundarioGris" : #d5d8d4
+);
+
+$padding: 2em;
+
+body{
+    background-color: map-get($colores, "principalClaro");;
+    color: map-get($colores, "principalOscuro");
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    span {
+        font-size: 1.25rem;
+        font-weight: 700; 
+        margin-left: .5em;
+    }
+    img{
+        width: 4em;
+        padding-left: $padding;
+    }  
+}
+
+.contenedorMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid map-get($colores, "secundarioGris");
+    background-color: map-get($colores, "principalClaro");
+}
+
+.menu{
+    margin: 0.5rem 1rem;
+    padding-right: 10px;
+
+    &:hover{
+        background-color: map-get($colores, "secundarioGris");
+        color: map-get($colores, "principalOscuro");
+        border-radius: 10px;
+    }
+}
+
+.iconos{
+    margin-left: 2;
+    i{
+        font-size: 1.5em;
+        padding-right: 0.5em;
+        &:hover {
+            color: map-get($colores, "principalColor" );
+        }
+    }
+}
+
+label{
+    cursor: pointer;
+}
+
+#theme {
+    display: none;
+}
+
+.oscuro {
+        background-color: map-get($colores, "principalOscuro");
+        color: map-get($colores, "principalClaro");
+
+    .contenedorMenu{
+        background-color: map-get($colores, "principalOscuro");;
+    }
+}

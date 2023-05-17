@@ -1,0 +1,27 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "publicar": "npm install && npm run codeMirror && npm run css && npm run copiarWind",
+    "publicarLinux": "npm install && npm run codeMirror && npm run css && npm run copiarLinux",
+    "copiarLinux": "cp img/* dist/img/*",
+    "copiarWind" :"xcopy img\\* dist\\img\\* && xcopy index.html dist\\* && xcopy js\\*.js dist\\js\\*",
+    "codeMirror": "rollup -c",
+    "css": "sass styles/general.scss:dist/styles/general.css styles/estiloMenu.scss:dist/styles/estiloMenu.css "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@codemirror/lang-html": "^6.4.3",
+    "@codemirror/lang-javascript": "^6.1.7",
+    "codemirror": "^6.0.1",
+    "sass": "^1.62.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "rollup": "^3.20.6"
+  }
+}
