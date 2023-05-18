@@ -32,3 +32,19 @@ select {
   border-radius: 5px;
   margin: 2em;
 }
+footer{
+  position: absolute;
+  bottom: 0;
+  left: 42%;
+  right: auto;
+  .footerTexto {
+    color: #d5d8d4;
+    text-align: center;
+  }
+  .separador {
+    background-color: #d5d8d4;
+    height: 2px;
+    max-width: 30px;
+    margin: 15px auto 20px;
+  }
+}
