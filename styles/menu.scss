@@ -1,21 +1,20 @@
+@import "general";
+//Declarar array de variables
 $colores :(
     "principalOscuro" : #0C0C0D,
     "principalClaro" : #FFFFFF,
     "principalColor" : #18F276,
     "secundarioGris" : #d5d8d4
 );
-
+//Declarar variables
 $padding: 2em;
 
-body{
-    background-color: map-get($colores, "principalClaro");;
-    color: map-get($colores, "principalOscuro");
-    margin: 0;
-}
+
 
 .logo {
     display: flex;
     align-items: center;
+    //al compilarlo en css se mostrará asi ".logo span"
     span {
         font-size: 1.25rem;
         font-weight: 700; 

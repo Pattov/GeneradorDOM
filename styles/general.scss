@@ -1,30 +1,79 @@
-.contenedor {
+// V A R I A B L E S
+//Declarar array de variables
+$colores :(
+    principalOscuro : #0C0C0D,
+    principalClaro : #FFF,
+    principalColor : #18F276,
+    secundarioGris : #d5d8d4
+);
+
+//Descripción:Funcion que acceder al array de colores
+//  $name: introducimos el valor de la variable 
+//Retorno: el color de la variable
+@function Colores($name) {
+  @return map-get($colores, $name);
+}
+//Descripción:Funcion para convertir un color a RGB decimal
+//Parámetros:
+//  $color: introducimos el color
+//      - una variable (Ej: $Verde)
+//      - un color RGB Hexadecimal (Ej: #542e65)
+//      - Palabra Clave (Ej: purple) ...
+//  $opacity:  introducimos la opaciodad siendo un valor entre 0(trasparente) y 1(opaco)
+//Retorno: el color de la variable
+@function ColoresRGBA($color, $opacity) {
+  @return rgba(red($color), green($color), blue($color), $opacity);
+}
+
+//M I X I N
+@mixin flex($align-items, $justify-content: null) {
+  display: flex;
+  align-items: $align-items;
+  
+  @if $justify-content != null {
+    justify-content: $justify-content;
+  }
+}
+
+@mixin grid($columns, $filas) {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($filas, 1fr);
+}
+body{
+  background-color: Colores(principalClaro);
+  color: Colores(principalOscuro);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contenedor {
+  @include grid(2,1);
   justify-items: center;
 }
 .panelEditor {
   width: 41vw;
   max-height: 70vh;
   overflow: auto;
-  &::-webkit-scrollbar {
+}
+
+::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-  }
-  &::-webkit-scrollbar-track {
+  &-track {
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
+    background: ColoresRGBA(Colores(principalOscuro), 0.1);
   }
-  &::-webkit-scrollbar-thumb {
+  &-thumb {
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.2);
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: #18F276;
-  }
-  &::-webkit-scrollbar-thumb:active {
-    background: #18F276;
+    background: ColoresRGBA(Colores(principalOscuro), 0.2);
+    
+    &:hover{
+      background: Colores(principalColor);
+    }
+    &:active{
+      background: Colores(principalColor);
+    }
   }
 }
 select {
@@ -32,15 +81,18 @@ select {
   border-radius: 5px;
   margin: 2em;
 }
+
 footer{
   position: absolute;
   bottom: 0;
   left: 42%;
   right: auto;
+
   .footerTexto {
     color: #d5d8d4;
     text-align: center;
   }
+  
   .separador {
     background-color: #d5d8d4;
     height: 2px;

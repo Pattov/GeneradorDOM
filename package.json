@@ -9,7 +9,7 @@
     "copiarLinux": "mkdir -p dist/img && mkdir -p dist/js && cp -R img dist && cp -R index.html dist && cp -R js dist",
     "copiarWind" :"xcopy img\\* dist\\img\\* && xcopy index.html dist\\* && xcopy js\\*.js dist\\js\\*",
     "codeMirror": "rollup -c",
-    "css": "sass styles/general.scss:dist/styles/general.css styles/estiloMenu.scss:dist/styles/estiloMenu.css "
+    "css": "sass styles/general.scss:dist/styles/general.css styles/menu.scss:dist/styles/menu.css "
   },
   "keywords": [],
   "author": "",
