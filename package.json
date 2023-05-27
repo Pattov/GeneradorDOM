@@ -7,9 +7,9 @@
     "publicar": "npm install && npm run codeMirror && npm run css && npm run copiarWind",
     "publicarLinux": "npm install && npm run codeMirror && npm run css && npm run copiarLinux",
     "copiarLinux": "mkdir -p dist/img && mkdir -p dist/js && cp -R img dist && cp -R index.html dist && cp -R js dist",
-    "copiarWind" :"xcopy img\\* dist\\img\\* && xcopy index.html dist\\* && xcopy js\\*.js dist\\js\\*",
+    "copiarWind": "xcopy img\\* dist\\img\\* && xcopy index.html dist\\* && xcopy js\\*.js dist\\js\\*",
     "codeMirror": "rollup -c",
-    "css": "sass styles/general.scss:dist/styles/general.css styles/menu.scss:dist/styles/menu.css "
+    "css": "sass styles/general.scss:dist/styles/general.css styles/temaOscuro.scss:dist/styles/temaOscuro.css "
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,10 @@
   "dependencies": {
     "@codemirror/lang-html": "^6.4.3",
     "@codemirror/lang-javascript": "^6.1.7",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@uiw/codemirror-theme-xcode": "^4.20.2",
     "codemirror": "^6.0.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.62.1"
   },
   "devDependencies": {

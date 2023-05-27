@@ -7,6 +7,8 @@ $colores :(
     secundarioGris : #d5d8d4
 );
 
+$margen: 2em;
+
 //Descripción:Funcion que acceder al array de colores
 //  $name: introducimos el valor de la variable 
 //Retorno: el color de la variable
@@ -40,6 +42,7 @@ $colores :(
   grid-template-columns: repeat($columns, 1fr);
   grid-template-rows: repeat($filas, 1fr);
 }
+
 body{
   background-color: Colores(principalClaro);
   color: Colores(principalOscuro);
@@ -51,10 +54,12 @@ body{
   @include grid(2,1);
   justify-items: center;
 }
+
 .panelEditor {
-  width: 41vw;
-  max-height: 70vh;
+  width: 80%;
   overflow: auto;
+  height: 400px;
+  max-height: 20em;
 }
 
 ::-webkit-scrollbar {
@@ -79,24 +84,71 @@ body{
 select {
   padding: 6px;
   border-radius: 5px;
-  margin: 2em;
+  margin: 8em $margen $margen;
 }
 
-footer{
-  position: absolute;
-  bottom: 0;
-  left: 42%;
-  right: auto;
+// M E N Ú
 
-  .footerTexto {
-    color: #d5d8d4;
-    text-align: center;
+.logo {
+  @include flex(center);
+  //al compilarlo en css se mostrará asi ".logo span"
+  span {
+      font-size: 1.25rem;
+      font-weight: 700; 
+      margin-left: .5em;
   }
-  
-  .separador {
-    background-color: #d5d8d4;
-    height: 2px;
-    max-width: 30px;
-    margin: 15px auto 20px;
+  img{
+      width: 4em;
+      padding-left: $margen;
+  }  
+}
+
+.contenedorMenu{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  @include flex(center, space-between);
+  border-bottom: 1px solid Colores(secundarioGris);
+  background-color: Colores(principalClaro);
+
+}
+
+
+.menu{
+  margin: 0.5rem 1rem;
+  padding-right: 10px;
+
+  &:hover{
+      background-color: Colores(secundarioGris);
+      color: Colores(principalOscuro);
+      border-radius: 10px;
+  }
+}
+
+
+.iconos{
+  margin-left: $margen;
+  i{
+      font-size: 1.5em;
+      padding-right: 0.5em;
+      &:hover {
+          color: Colores(principalColor);
+      }
+  }
+}
+
+label{
+  cursor: pointer;
+}
+
+// P I E   D E   P Á G I N A 
+footer{
+  border-top: 1px solid Colores(secundarioGris);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .footerTexto {
+    color: Colores(principalOscuro);
+    text-align: center;
   }
 }

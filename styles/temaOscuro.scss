@@ -1,0 +1,15 @@
+@import "general";
+
+#theme {
+    display: none;
+}
+
+// M E N Ú
+.oscuro {
+        background-color: Colores(principalOscuro);
+        color: Colores(principalClaro);
+
+    .contenedorMenu{
+        background-color: Colores(principalOscuro);
+    }
+}
