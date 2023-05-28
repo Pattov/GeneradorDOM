@@ -7,6 +7,7 @@ const VENTANAMODAL= document.getElementById("ventanaModal");
 let select = document.getElementById("ejemplos");
 let textJs;
 let contador = 0, elementoAnterior = "padre";
+
 let editorJs = new EditorView({
   extensions: [basicSetup, javascript(), EditorView.editable.of(false)],
   parent: document.getElementById("editor-js")
@@ -30,26 +31,27 @@ let editorHtml = new EditorView({
   parent: document.getElementById("editor-html")
 })
 
-editorJs.dom.addEventListener("dblclick", ()=>{
-  const content = editorJs.state.doc.toString();
-  // Crear un elemento de entrada de texto oculto
-  const textArea = document.createElement('textarea');
-  textArea.value = content;
-  textArea.style.position = 'fixed';
-  textArea.style.opacity = '0';
 
-  // Agregar el elemento de entrada de texto al DOM
-  document.body.appendChild(textArea);
+// editorJs.dom.addEventListener("dblclick", ()=>{
+//   const content = editorJs.state.doc.toString();
+//   // Crear un elemento de entrada de texto oculto
+//   const textArea = document.createElement('textarea');
+//   textArea.value = content;
+//   textArea.style.position = 'fixed';
+//   textArea.style.opacity = '0';
 
-  // Seleccionar y copiar el contenido del elemento de entrada de texto
-  textArea.select();
-  document.execCommand('copy');
+//   // Agregar el elemento de entrada de texto al DOM
+//   document.body.appendChild(textArea);
 
-  // Eliminar el elemento de entrada de texto del DOM
-  document.body.removeChild(textArea);
+//   // Seleccionar y copiar el contenido del elemento de entrada de texto
+//   textArea.select();
+//   document.execCommand('copy');
 
-  alert("Contenido copiado al portapapeles")
-})
+//   // Eliminar el elemento de entrada de texto del DOM
+//   document.body.removeChild(textArea);
+
+//   alert("Contenido copiado al portapapeles")
+// })
 
 select.addEventListener("change", function() {
   var selectedOption = select.value; // Obtener el valor de la opción seleccionada
