@@ -43,6 +43,8 @@ $altura: calc(100% - $margen);
   grid-template-rows: repeat($filas, 1fr);
 }
 
+
+
 @mixin laptop {
   @media (min-width: 1024px) {
     @content;
@@ -61,13 +63,16 @@ $altura: calc(100% - $margen);
   }
 }
 
+
 body{
   background-color: Colores(principalClaro);
   color: Colores(principalOscuro);
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  @include tabletAndMobile{
+    height: 100%;
+  }
 }
-
 .contenedor {
   justify-items: center;
   @include laptop{
@@ -80,6 +85,7 @@ body{
 }
 
 .panelEditor {
+  position: relative;
   width: 80%;
   overflow: auto;
   @include laptop{
@@ -88,6 +94,27 @@ body{
   }
   @include tabletAndMobile{
     margin-bottom: $margen;
+    
+  }
+  
+  .box-icon {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    right: 0; 
+    top: 0;
+    margin: 5px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding-top: 5px;
+    
+    &:hover {
+      border-radius: 5px;
+      background-color: Colores(secundarioGris);
+    }
   }
 }
 
@@ -196,8 +223,8 @@ footer{
     position: relative;
     bottom: 0;
   }
+
   border-top: 1px solid Colores(secundarioGris);
-  
   width: 100%;
   #footerTexto {
     color: Colores(principalOscuro);

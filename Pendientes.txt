@@ -1,0 +1,18 @@
+
+
+generar popup Documentacion
+
+
+Diseño
+
+    hacer que el boton de pegar se scrollee
+
+    en formato movil que el footer se quede abajo
+
+    poner tooltip
+
+    limpiar html
+
+preguntar???
+
+    BBDD estudio de mercado

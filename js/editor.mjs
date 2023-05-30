@@ -5,6 +5,7 @@ import {htmlLanguage} from '@codemirror/lang-html';
 
 const VENTANAMODAL= document.getElementById("ventanaModal");
 let select = document.getElementById("ejemplos");
+const iconoCopy = document.getElementById("icono");
 let textJs;
 let contador = 0, elementoAnterior = "padre";
 
@@ -16,13 +17,14 @@ let editorJs = new EditorView({
 let updateListenerExtension = EditorView.updateListener.of((update) => {
   if (update.docChanged) {
     textJs ="";
-    //almaceno entrada de datos eb String
+    //se almacena entrada de datos en String
     let StringHtml = editorHtml.contentDOM.innerText;
 
-    let texto = "let texto = \"Hello World\"";
     let nodos = convertElementsToObj(SerializeHtml(StringHtml));
 
     editorJs.contentDOM.innerText = createJS(nodos);
+    //se muestra el icono de copiar
+    iconoCopy.style.display= "block";
   }
 });
 
@@ -31,27 +33,6 @@ let editorHtml = new EditorView({
   parent: document.getElementById("editor-html")
 })
 
-
-// editorJs.dom.addEventListener("dblclick", ()=>{
-//   const content = editorJs.state.doc.toString();
-//   // Crear un elemento de entrada de texto oculto
-//   const textArea = document.createElement('textarea');
-//   textArea.value = content;
-//   textArea.style.position = 'fixed';
-//   textArea.style.opacity = '0';
-
-//   // Agregar el elemento de entrada de texto al DOM
-//   document.body.appendChild(textArea);
-
-//   // Seleccionar y copiar el contenido del elemento de entrada de texto
-//   textArea.select();
-//   document.execCommand('copy');
-
-//   // Eliminar el elemento de entrada de texto del DOM
-//   document.body.removeChild(textArea);
-
-//   alert("Contenido copiado al portapapeles")
-// })
 
 select.addEventListener("change", function() {
   var selectedOption = select.value; // Obtener el valor de la opción seleccionada
