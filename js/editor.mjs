@@ -2,6 +2,7 @@ import {EditorView, basicSetup} from "codemirror";
 import {EditorState} from "@codemirror/state";
 import {javascript} from "@codemirror/lang-javascript";
 import {htmlLanguage} from '@codemirror/lang-html';
+import { xcodeDark } from '@uiw/codemirror-theme-xcode';
 
 const VENTANAMODAL= document.getElementById("ventanaModal");
 let select = document.getElementById("ejemplos");
@@ -10,7 +11,7 @@ let textJs;
 let contador = 0, elementoAnterior = "padre";
 
 let editorJs = new EditorView({
-  extensions: [basicSetup, javascript(), EditorView.editable.of(false)],
+  extensions: [basicSetup, javascript(), xcodeDark, EditorView.editable.of(false)],
   parent: document.getElementById("editor-js")
 })
 
