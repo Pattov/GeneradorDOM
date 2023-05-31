@@ -7,6 +7,7 @@ export default {
   output: {
     file: './dist/js/editor.bundle.js', // Archivo de salida
     format: 'iife', // Formato de módulo deseado
+    external: ['moment'], // <-- suppresses the warning
     globals: {
       '@babel/runtime/helpers/extends': '_extends' // Nombre global para el módulo externo
     }
@@ -18,6 +19,5 @@ export default {
       babelHelpers: 'bundled', // Utiliza los helpers de babel empaquetados
       exclude: 'node_modules/**' // Excluye la carpeta node_modules
     })
-  ],
-  external: ['@babel/runtime/helpers/extends'] // Marca el módulo externo como una dependencia externa
+  ]
 };

@@ -1,6 +1,6 @@
 const icono = document.getElementById("icono");
 const iconoElemento = icono.querySelector("i");
-
+const panelJavascript = document.getElementById("editor-js");
 function Icono() {
   if (iconoElemento.classList.contains("bx-copy")) {
     iconoElemento.classList.remove("bx-copy");
@@ -14,7 +14,7 @@ function Icono() {
   }
 
   const content = panelJavascript.getElementsByClassName('cm-content')[0].innerText;
-  console.log(content);
+  
   // Crear un elemento de entrada de texto oculto
   const textArea = document.createElement('textarea');
   textArea.value = content;
@@ -31,4 +31,3 @@ function Icono() {
   // Se Elimina el elemento de entrada de texto del DOM
   document.body.removeChild(textArea);
 }
-

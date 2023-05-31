@@ -30,8 +30,9 @@ let updateListenerExtension = EditorView.updateListener.of((update) => {
 });
 
 let editorHtml = new EditorView({
-  extensions: [basicSetup, htmlLanguage, updateListenerExtension],
-  parent: document.getElementById("editor-html")
+  extensions: [basicSetup, htmlLanguage, xcodeDark, updateListenerExtension],
+  parent: document.getElementById("editor-html"),
+  
 })
 
 
