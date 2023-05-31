@@ -43,11 +43,14 @@
     <!-- Opciones -->
     <Section>
         <select id="ejemplos" aria-label="Ejemplos">
-            <option value="hide">-- Selecciona un Ejemplo --</option>
+            <option value="hide" disabled selected>-- Selecciona un Ejemplo --</option>
             <option value="sencillo">Sencillo</option>
             <option value="select">Select</option>
             <option value="tabla">Tabla</option>
         </select>
+        <button id="iconoBorrar" onclick="IconoBorrar()">
+            <i class='bx bx-trash'></i>
+        </button>
         <!-- Paneles -->
         <div class="contenedor">
            <div class="panelEditor" id="editor-html">

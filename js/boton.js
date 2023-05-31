@@ -1,6 +1,10 @@
 const icono = document.getElementById("icono");
 const iconoElemento = icono.querySelector("i");
 const panelJavascript = document.getElementById("editor-js");
+const panelHtml= document.getElementById("editor-html");
+const botonBorrar = document.getElementById('iconoBorrar');
+const iconoBorrar = botonBorrar.querySelector("i");
+
 function Icono() {
   if (iconoElemento.classList.contains("bx-copy")) {
     iconoElemento.classList.remove("bx-copy");
@@ -30,4 +34,14 @@ function Icono() {
 
   // Se Elimina el elemento de entrada de texto del DOM
   document.body.removeChild(textArea);
+}
+
+function IconoBorrar() {
+  //Se quita el icono y cambiamos el select
+  document.getElementById('ejemplos').options[0].selected = true;
+  botonBorrar.style.display = "none";
+  //Se vacian los paneles
+  panelJavascript.getElementsByClassName('cm-content')[0].innerText = "";
+  panelHtml.getElementsByClassName('cm-content')[0].innerText = "";
+  icono.style.display = "none";
 }

@@ -1,9 +1,10 @@
 
-
 generar popup Documentacion
 
 
 Diseño
+
+    al borrar quitar del panel de js el boton de copiar
 
     hacer que el boton de pegar se scrollee
 

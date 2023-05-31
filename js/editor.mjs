@@ -7,6 +7,7 @@ import { xcodeDark } from '@uiw/codemirror-theme-xcode';
 const VENTANAMODAL= document.getElementById("ventanaModal");
 let select = document.getElementById("ejemplos");
 const iconoCopy = document.getElementById("icono");
+const iconoBorrar = document.getElementById('iconoBorrar');
 let textJs;
 let contador = 0, elementoAnterior = "padre";
 
@@ -46,6 +47,7 @@ select.addEventListener("change", function() {
   } else if (selectedOption === "tabla") {
     editorHtml.contentDOM.innerText = "<table class=\"table\">\n\t<thead>\n\t\t<tr>\n\t\t\t<th scope=\"col\">#</th>\n\t\t\t<th scope=\"col\">First</th>\n\t\t\t<th scope=\"col\">Last</th>\n\t\t\t<th scope=\"col\">Handle</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<th scope=\"row\">1</th>\n\t\t\t<td>Mark</td>\n\t\t\t<td>Otto</td>\n\t\t\t<td>@mdo</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<th scope=\"row\">2</th>\n\t\t\t<td>Jacob</td>\n\t\t\t<td>Thornton</td>\n\t\t\t<td>@fat</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<th scope=\"row\">3</th>\n\t\t\t<td colspan=\"2\">Larry the Bird</td>\n\t\t\t<td>@twitter</td>\n\t\t</tr>\n\t</tbody>\n</table>\n";
   } 
+  iconoBorrar.style.display= "inline-block";
 });
 
 
