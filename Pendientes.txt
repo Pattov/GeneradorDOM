@@ -6,14 +6,15 @@ Diseño
 
     al borrar quitar del panel de js el boton de copiar
 
-    hacer que el boton de pegar se scrollee
+    hacer que el boton de pegar se scrolleé
 
     en formato movil que el footer se quede abajo
 
-    poner tooltip
-
     limpiar html
-
-preguntar???
-
-    BBDD estudio de mercado
+   
+   
+Cosas que hacer despues de entregar la documentacion
+    
+    Documentar GIT
+    
+    Poner tooltip
