@@ -73,6 +73,33 @@ body{
     height: 100%;
   }
 }
+//  C U E R P O 
+// cabecera
+
+  select {
+    padding: 6px;
+    border-radius: 5px;
+    @include laptop{
+      margin-top: 8em;
+    }
+    margin: $margen;
+    margin-right: 1em;
+  }
+
+  #iconoBorrar{
+    display: none;
+    margin: 5px;
+    background-color: transparent;
+    color: Colores(principalOscuro);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    padding-top: 5px;
+  }
+  
+  
+//cuerpo
 .contenedor {
   justify-items: center;
   @include laptop{
@@ -88,13 +115,14 @@ body{
   position: relative;
   width: 80%;
   overflow: auto;
+
   @include laptop{
     height: 400px;
     max-height: 22em;
   }
+
   @include tabletAndMobile{
     margin-bottom: $margen;
-    
   }
   
   .box-icon {
@@ -136,27 +164,6 @@ body{
       background: Colores(principalColor);
     }
   }
-}
-select {
-  padding: 6px;
-  border-radius: 5px;
-  @include laptop{
-    margin-top: 8em;
-  }
-  margin: $margen;
-  margin-right: 1em;
-}
-#iconoBorrar{
-  display: none;
-  
-  margin: 5px;
-  margin-bottom: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  padding-top: 5px;
 }
 
 // M E N Ú
@@ -233,12 +240,13 @@ footer{
     bottom: 0;
   }
   @include tabletAndMobile(){
-    position: relative;
+    position: sticky;
     bottom: 0;
   }
-
+  background-color: Colores(principalClaro);
   border-top: 1px solid Colores(secundarioGris);
   width: 100%;
+
   #footerTexto {
     color: Colores(principalOscuro);
     text-align: center;

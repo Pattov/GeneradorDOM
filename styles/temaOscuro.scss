@@ -8,12 +8,16 @@
 .oscuro {
     background-color: Colores(principalOscuro);
     color: Colores(principalClaro);
-
     .contenedorMenu{
         background-color: Colores(principalOscuro);
     }
-
-    #footerTexto{
+    #iconoBorrar{
         color: Colores(principalClaro);
+    }
+    footer{
+        background-color: Colores(principalOscuro);
+        #footerTexto{
+            color: Colores(principalClaro);
+        }
     }
 }

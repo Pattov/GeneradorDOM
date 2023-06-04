@@ -42,27 +42,31 @@
     <!-- C U E R P O -->
     <!-- Opciones -->
     <Section>
-        <select id="ejemplos" aria-label="Ejemplos">
-            <option value="hide" disabled selected>-- Selecciona un Ejemplo --</option>
-            <option value="sencillo">Sencillo</option>
-            <option value="select">Select</option>
-            <option value="tabla">Tabla</option>
-        </select>
-        <button id="iconoBorrar" onclick="IconoBorrar()">
-            <i class='bx bx-trash'></i>
-        </button>
-        <!-- Paneles -->
-        <div class="contenedor">
-           <div class="panelEditor" id="editor-html">
-           </div> 
-           <div class="panelEditor" id="editor-js">
-                <button id="icono" class="box-icon" onclick="Icono()">
-                    <i class='bx bx-copy'></i>
-                </button>
-           </div> 
-        </div>
+        <article class="encabezadoCuerpo">
+            <select id="ejemplos" aria-label="Ejemplos">
+                <option value="hide" disabled selected>-- Selecciona un Ejemplo --</option>
+                <option value="sencillo">Sencillo</option>
+                <option value="select">Select</option>
+                <option value="tabla">Tabla</option>
+            </select>
+            <button id="iconoBorrar" onclick="IconoBorrar()">
+                <i class='bx bx-trash'></i>
+            </button>
+        </article>
+            <!-- Paneles -->
+        <article>
+            <div class="contenedor">
+                <div class="panelEditor" id="editor-html">
+                </div> 
+                <div class="panelEditor" id="editor-js">
+                    <button id="icono" class="box-icon" onclick="Icono()">
+                        <i class='bx bx-copy'></i>
+                    </button>
+                </div> 
+            </div>
+        </article>
     </Section>
-    <!-- P I E -->
+        <!-- P I E -->
     <footer>
         <p id="footerTexto">PATRICIA TOVAR QUINTANO - 2023</p>
     </footer>
