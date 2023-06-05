@@ -1,20 +1,25 @@
+///////////////////////////////////////////////////////////////////
 // V A R I A B L E S
+///////////////////////////////////////////////////////////////////
 //Declarar array de variables
-$colores :(
-    principalOscuro : #0C0C0D,
-    principalClaro : #FFF,
-    principalColor : #18F276,
-    secundarioGris : #d5d8d4
+$colores: (
+  principalOscuro: #0c0c0d,
+  principalClaro: #fff,
+  principalColor: #18f276,
+  secundarioGris: #d5d8d4,
 );
 
 $margen: 2em;
-$altura: calc(100% - $margen);
+$alturaHeader: 7em;
+$alturaFooter: 3.5em;
+$altura: calc(100% - $alturaHeader - $alturaFooter);
 //Descripción:Funcion que acceder al array de colores
-//  $name: introducimos el valor de la variable 
+//  $name: introducimos el valor de la variable
 //Retorno: el color de la variable
 @function Colores($name) {
   @return map-get($colores, $name);
 }
+
 //Descripción:Funcion para convertir un color a RGB decimal
 //Parámetros:
 //  $color: introducimos el color
@@ -27,11 +32,13 @@ $altura: calc(100% - $margen);
   @return rgba(red($color), green($color), blue($color), $opacity);
 }
 
-//M I X I N
+///////////////////////////////////////////////////////////////////
+// M I X I N
+///////////////////////////////////////////////////////////////////
 @mixin flex($alignItems, $justifyContent: null) {
   display: flex;
   align-items: $alignItems;
-  
+
   @if $justifyContent != null {
     justify-content: $justifyContent;
   }
@@ -43,15 +50,13 @@ $altura: calc(100% - $margen);
   grid-template-rows: repeat($filas, 1fr);
 }
 
-
-
 @mixin laptop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin tabletAndMobile{
+@mixin tabletAndMobile {
   @media (max-width: 1023px) {
     @content;
   }
@@ -63,49 +68,162 @@ $altura: calc(100% - $margen);
   }
 }
 
+///////////////////////////////////////////////////////////////////
+// E S T I L O S 
+///////////////////////////////////////////////////////////////////
 
-body{
+body {
+  font-family: "Poppins", sans-serif;
   background-color: Colores(principalClaro);
   color: Colores(principalOscuro);
+  //Se dan propiedades al media query para Laptop
+  @include laptop {
+    overflow: hidden;
+  }
+
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  @include tabletAndMobile{
-    height: 100%;
+}
+
+///////////////////////////////////////////////////////////////////
+// M E N Ú
+///////////////////////////////////////////////////////////////////
+.logo {
+  @include flex(center);
+  
+  //al compilarlo en css se mostrará asi ".logo span"
+  span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-left: 0.5em;
+    @include mobile {
+      display: none;
+    }
+  }
+  
+  img {
+    width: 4em;
+    padding-left: $margen;
   }
 }
-//  C U E R P O 
-// cabecera
 
-  select {
-    padding: 6px;
-    border-radius: 5px;
-    @include laptop{
-      margin-top: 8em;
-    }
-    margin: $margen;
-    margin-right: 1em;
+.contenedorMenu {
+
+  @include laptop {
+    position: fixed;
+  }
+  @include tabletAndMobile {
+    position: sticky;
+    z-index: 1;
   }
 
+  top: 0;
+  width: 100%;
+  @include flex(center, space-between);
+  border-bottom: 1px solid Colores(secundarioGris);
+  background-color: Colores(principalClaro);
+}
+.menu{
+  display: flex;
+  .btnmenu {
+    padding: 0.6rem;
+    margin: 0.4rem;
+    i{
+      padding-right: 5px;
+    }
+    &:hover{
+      background-color: Colores(secundarioGris);
+      color: Colores(principalOscuro);
+      border-radius: 5px;
+    }
+  }
+}
+
+.iconos {
+  margin-left: $margen;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  i {
+    font-size: 1.5em;
+    padding-right: 0.5em;
+    &:hover {
+      color: Colores(principalColor);
+    }
+  }
+}
+
+label {
+  cursor: pointer;
+}
+
+///////////////////////////////////////////////////////////////////
+//  C U E R P O
+///////////////////////////////////////////////////////////////////
+main {
+  height: 100%;
+}
+
+//estilos scroll
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  &-track {
+    border-radius: 10px;
+    background: ColoresRGBA(Colores(principalOscuro), 0.1);
+  }
+  &-thumb {
+    border-radius: 10px;
+    background: ColoresRGBA(Colores(principalOscuro), 0.2);
+
+    &:hover {
+      background: Colores(principalColor);
+    }
+    &:active {
+      background: Colores(principalColor);
+    }
+  }
+}
+
+//cabecera
+.encabezadoCuerpo {
+  @include flex(center);
+
+  @include laptop{
+    margin: 1em;
+    margin-top: $alturaHeader; //1em del margin general(para que quede igual) + 5em que son 75px aprox.
+  }
+  @include tabletAndMobile(){
+    margin: 1em;
+  }
+  select{
+    margin-left: 3em;
+    padding: 6px;
+    border-radius: 5px;
+    margin-right: 1em;//Se separa del icono
+  }
   #iconoBorrar{
     display: none;
-    margin: 5px;
     background-color: transparent;
     color: Colores(principalOscuro);
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 1.5em;
-    padding-top: 5px;
   }
-  
-  
-//cuerpo
-.contenedor {
+}
+
+//paneles
+.contenedorPaneles {
+  height: 100%;
   justify-items: center;
-  @include laptop{
-    @include grid(2,1);
+
+  @include laptop {
+    @include grid(2, 1);
+    margin-bottom: $alturaFooter;
   }
-  @include tabletAndMobile{
+
+  @include tabletAndMobile {
     @include flex(center);
     flex-direction: column;
   }
@@ -115,21 +233,20 @@ body{
   position: relative;
   width: 80%;
   overflow: auto;
-
   @include laptop{
     height: 400px;
     max-height: 22em;
   }
 
-  @include tabletAndMobile{
-    margin-bottom: $margen;
+  @include tabletAndMobile {
+    margin-bottom: $margen; //Separa los dos paneles cuando esta en el móvil
+    max-height: 30em;//solo muestra las primeras 30 líneas del editor de código
   }
-  
   .box-icon {
     display: none;
     z-index: 2;
     position: absolute;
-    right: 0; 
+    right: 0;
     top: 0;
     margin: 5px;
     background-color: transparent;
@@ -139,110 +256,23 @@ body{
     cursor: pointer;
     font-size: 1.5em;
     padding-top: 5px;
-    
     &:hover {
       color: Colores(principalColor);
     }
   }
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  &-track {
-    border-radius: 10px;
-    background: ColoresRGBA(Colores(principalOscuro), 0.1);
-  }
-  &-thumb {
-    border-radius: 10px;
-    background: ColoresRGBA(Colores(principalOscuro), 0.2);
-    
-    &:hover{
-      background: Colores(principalColor);
-    }
-    &:active{
-      background: Colores(principalColor);
-    }
-  }
-}
-
-// M E N Ú
-
-.logo {
-  @include flex(center);
-  //al compilarlo en css se mostrará asi ".logo span"
-  span {
-      font-size: 1.25rem;
-      font-weight: 700; 
-      margin-left: .5em;
-      @include mobile{
-        display: none;
-      }
-  }
-  img{
-      width: 4em;
-      padding-left: $margen;
-  }  
-}
-
-.contenedorMenu{
-  @include laptop{
+///////////////////////////////////////////////////////////////////
+// P I E   D E   P Á G I N A
+///////////////////////////////////////////////////////////////////
+footer {
+  @include laptop {
     position: fixed;
   }
-  @include tabletAndMobile{
+  @include tabletAndMobile() {
     position: sticky;
-    z-index: 1;
   }
-  top: 0;
-  width: 100%;
-  @include flex(center, space-between);
-  border-bottom: 1px solid Colores(secundarioGris);
-  background-color: Colores(principalClaro);
-  
-}
-
-
-.menu{
-  margin: 0.5rem 1rem;
-  padding-right: 10px;
-
-  &:hover{
-      background-color: Colores(secundarioGris);
-      color: Colores(principalOscuro);
-      border-radius: 10px;
-  }
-}
-
-
-.iconos{
-  margin-left: $margen;
-  a{
-    color: inherit;
-    text-decoration: none;
-  }
-  i{
-    font-size: 1.5em;
-    padding-right: 0.5em;
-    &:hover {
-        color: Colores(principalColor);
-    }
-  }
-}
-
-label{
-  cursor: pointer;
-}
-
-// P I E   D E   P Á G I N A 
-footer{
-  @include laptop{
-    position: fixed;
-    bottom: 0;
-  }
-  @include tabletAndMobile(){
-    position: sticky;
-    bottom: 0;
-  }
+  bottom: 0;
   background-color: Colores(principalClaro);
   border-top: 1px solid Colores(secundarioGris);
   width: 100%;

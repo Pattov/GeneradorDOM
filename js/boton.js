@@ -5,7 +5,7 @@ const panelHtml= document.getElementById("editor-html");
 const botonBorrar = document.getElementById('iconoBorrar');
 const iconoBorrar = botonBorrar.querySelector("i");
 //2023 pendiente comentar función iconoCopiar
-function Icono() {
+function IconoCopiar() {
   
   // C A M B I A R   D I S E Ñ O
   if (iconoElemento.classList.contains("bx-copy")) {
@@ -41,11 +41,11 @@ function Icono() {
 }
 // 2023
 function IconoBorrar() {
+  icono.style.display = "none";
   //Se quita el icono y cambiamos el select
   document.getElementById('ejemplos').options[0].selected = true;
   botonBorrar.style.display = "none";
   //Se vacian los paneles
   panelJavascript.getElementsByClassName('cm-content')[0].innerText = "";
   panelHtml.getElementsByClassName('cm-content')[0].innerText = "";
-  icono.style.display = "none";
 }

@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de DOM</title>
     <link rel="shortcut icon" href="img/logoVerde.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles/temaOscuro.css">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/temaOscuro.css">
 
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -27,12 +29,10 @@
             <img src="img/logoVerde.png">
             <span>GENERADOR DOM</span>
         </div>
-        <div class="menu">
-            <ul class="bx-ul">
-                <li><i class='bx bx-book-bookmark'></i> Documentacion
-                </li>
-            </ul>
-        </div>
+        <nav class="menu">
+            <div class='btnmenu guia'><i class='bx bx-book-bookmark'></i>Guía</div>
+            <div class='btnmenu test'><i class='bx bx-spreadsheet'></i>Test</div>
+        </nav>
         <div class="iconos">
             <label for="theme" id="label"><i class='bx bxs-moon'></i></label>
             <input type="checkbox" id="theme">
@@ -41,8 +41,8 @@
     </header>
     <!-- C U E R P O -->
     <!-- Opciones -->
-    <Section>
-        <article class="encabezadoCuerpo">
+    <main>
+        <section class="encabezadoCuerpo">
             <select id="ejemplos" aria-label="Ejemplos">
                 <option value="hide" disabled selected>-- Selecciona un Ejemplo --</option>
                 <option value="sencillo">Sencillo</option>
@@ -52,24 +52,33 @@
             <button id="iconoBorrar" onclick="IconoBorrar()">
                 <i class='bx bx-trash'></i>
             </button>
-        </article>
+        </section>
             <!-- Paneles -->
-        <article>
-            <div class="contenedor">
+        <section>
+            <div class="contenedorPaneles">
                 <div class="panelEditor" id="editor-html">
                 </div> 
                 <div class="panelEditor" id="editor-js">
-                    <button id="icono" class="box-icon" onclick="Icono()">
+                    <button id="icono" class="box-icon" onclick="IconoCopiar()">
                         <i class='bx bx-copy'></i>
                     </button>
                 </div> 
             </div>
-        </article>
-    </Section>
+        </section>
+    </main>
         <!-- P I E -->
     <footer>
         <p id="footerTexto">PATRICIA TOVAR QUINTANO - 2023</p>
     </footer>
+    <!-- V E N T A N A   M O D A L  -->
+    <section class="modal ">
+        <div class="modal__container">
+            <h2 class="modal__title">¡Bienvenido al sitio!</h2>
+            <p class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur deleniti maxime.</p>
+            <a href="#" class="modal__close">Cerrar Modal</a>
+        </div>
+    </section>
+    <script src="js/modal.js"></script>
     <script src="js/boton.js"></script>
     <script src="js/localStorage.js"></script>
     <script src="js/editor.bundle.js"></script>
