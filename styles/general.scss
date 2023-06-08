@@ -69,7 +69,7 @@ $altura: calc(100% - $alturaHeader - $alturaFooter);
 }
 
 ///////////////////////////////////////////////////////////////////
-// E S T I L O S 
+// E S T I L O S
 ///////////////////////////////////////////////////////////////////
 
 body {
@@ -89,7 +89,7 @@ body {
 ///////////////////////////////////////////////////////////////////
 .logo {
   @include flex(center);
-  
+
   //al compilarlo en css se mostrará asi ".logo span"
   span {
     font-size: 1.25rem;
@@ -99,7 +99,7 @@ body {
       display: none;
     }
   }
-  
+
   img {
     width: 4em;
     padding-left: $margen;
@@ -107,7 +107,6 @@ body {
 }
 
 .contenedorMenu {
-
   @include laptop {
     position: fixed;
   }
@@ -122,15 +121,15 @@ body {
   border-bottom: 1px solid Colores(secundarioGris);
   background-color: Colores(principalClaro);
 }
-.menu{
+.menu {
   display: flex;
   .btnmenu {
     padding: 0.6rem;
     margin: 0.4rem;
-    i{
+    i {
       padding-right: 5px;
     }
-    &:hover{
+    &:hover {
       background-color: Colores(secundarioGris);
       color: Colores(principalOscuro);
       border-radius: 5px;
@@ -189,20 +188,20 @@ main {
 .encabezadoCuerpo {
   @include flex(center);
 
-  @include laptop{
+  @include laptop {
     margin: 1em;
     margin-top: $alturaHeader; //1em del margin general(para que quede igual) + 5em que son 75px aprox.
   }
-  @include tabletAndMobile(){
+  @include tabletAndMobile() {
     margin: 1em;
   }
-  select{
+  select {
     margin-left: 3em;
     padding: 6px;
     border-radius: 5px;
-    margin-right: 1em;//Se separa del icono
+    margin-right: 1em; //Se separa del icono
   }
-  #iconoBorrar{
+  #iconoBorrar {
     display: none;
     background-color: transparent;
     color: Colores(principalOscuro);
@@ -233,14 +232,14 @@ main {
   position: relative;
   width: 80%;
   overflow: auto;
-  @include laptop{
+  @include laptop {
     height: 400px;
     max-height: 22em;
   }
 
   @include tabletAndMobile {
     margin-bottom: $margen; //Separa los dos paneles cuando esta en el móvil
-    max-height: 30em;//solo muestra las primeras 30 líneas del editor de código
+    max-height: 30em; //solo muestra las primeras 30 líneas del editor de código
   }
   .box-icon {
     display: none;
@@ -280,5 +279,112 @@ footer {
   #footerTexto {
     color: Colores(principalOscuro);
     text-align: center;
+  }
+}
+
+///////////////////////////////////////////////////////////////////
+// V E N T A N A   M O D A L
+///////////////////////////////////////////////////////////////////
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: Colores(principalOscuro);
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s 0.9s;
+  --transform: translateY(-100vh);
+  --transition: transform 0.8s;
+  &--show {
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity 0.6s;
+    --transform: translateY(0);
+    --transition: transform 0.8s 0.8s;
+  }
+  .contenedorModal {
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90%;
+    background-color: Colores(principalClaro);
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+    transform: var(--transform);
+    transition: var(--transition);
+    @include tabletAndMobile{
+      padding: 2em 1.5em;
+    }
+  }
+}
+
+.tituloModal {
+  font-size: 2.5rem;
+
+  @include tabletAndMobile{
+    font-size: 2rem;
+  }
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  > *:not(:last-child) {
+    flex-direction: column;
+  }
+  .contenedorCampo {
+    margin-bottom: 10px;
+
+    >label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .campo {
+      @include flex(center);
+      flex-direction: row;
+      margin-bottom: 5px;
+
+      .opcion {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  textarea {
+    width: 100%;
+    resize: none; /* Evita la redimensión del textarea */
+  }
+
+}
+.botones{
+  width: 100%;
+  @include flex(center, space-evenly);
+}
+
+.btnModal {
+  text-decoration: none;
+  color: Colores(principalOscuro);
+  background-color: Colores(principalColor);
+  padding: 1em 3em;
+  border: 1px solid;
+  border-radius: 6px;
+  display: inline-block;
+  width: 20%;
+  font-weight: 300;
+  transition: background-color 0.3s;
+  &:hover {
+    color: Colores(principalColor);
+    background-color: Colores(principalClaro);
   }
 }

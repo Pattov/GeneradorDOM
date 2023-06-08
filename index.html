@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de DOM</title>
     <link rel="shortcut icon" href="img/logoVerde.png" type="image/x-icon">
-    
+
     <!-- Estilos -->
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/temaOscuro.css">
@@ -22,6 +23,7 @@
     <script src="https://unpkg.com/@babel/runtime@7.15.4/helpers/extends.js"></script>
 
 </head>
+
 <body>
     <!-- M E N U  -->
     <header class="contenedorMenu">
@@ -53,29 +55,67 @@
                 <i class='bx bx-trash'></i>
             </button>
         </section>
-            <!-- Paneles -->
+        <!-- Paneles -->
         <section>
             <div class="contenedorPaneles">
                 <div class="panelEditor" id="editor-html">
-                </div> 
+                </div>
                 <div class="panelEditor" id="editor-js">
                     <button id="icono" class="box-icon" onclick="IconoCopiar()">
                         <i class='bx bx-copy'></i>
                     </button>
-                </div> 
+                </div>
             </div>
         </section>
     </main>
-        <!-- P I E -->
+    <!-- P I E -->
     <footer>
         <p id="footerTexto">PATRICIA TOVAR QUINTANO - 2023</p>
     </footer>
     <!-- V E N T A N A   M O D A L  -->
-    <section class="modal ">
-        <div class="modal__container">
-            <h2 class="modal__title">¡Bienvenido al sitio!</h2>
-            <p class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur deleniti maxime.</p>
-            <a href="#" class="modal__close">Cerrar Modal</a>
+    <section class="modal test">
+        <div class="contenedorModal">
+            <form>
+                <h2 class="tituloModal">Manda tu opinión</h2>
+                <div class="contenedorCampo">
+                    <label>Situación Actual</label>
+                    <div class="campo">
+                        <div class="opcion">
+                            <input name="situacionLaboral" id="slTrabajar" type="radio" value="trabajar">
+                            <label for="slTrabajar">Trabajando</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="situacionLaboral" id="slEstudiar" type="radio" value="estudiar">
+                            <label for="slEstudiar">Estudiando</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="situacionLaboral" id="slNinguno" type="radio"  value="ambos">
+                            <label for="slNinguno">Ninguno</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedorCampo">
+                    <label>¿Usarías la aplicación?</label>
+                    <div  class="campo">
+                        <div class="opcion">
+                            <input name="usabilidad" id="usabilidadSi" type="radio" value="SI">
+                            <label for="usabilidadSi">Si</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="usabilidad" id="usabilidadNo" type="radio" value="NO">
+                            <label for="usabilidadNo">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedorCampo">
+                    <label for="textarea">¿Qué te gustaría comentar?</label>
+                    <textarea id="textarea" name="textarea" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="botones">
+                    <a href="#" class="btnModal enviar">Enviar</a>
+                    <a href="#" class="btnModal cerrar">Cerrar</a>
+                </div>
+            </form>
         </div>
     </section>
     <script src="js/modal.js"></script>
@@ -84,6 +124,7 @@
     <script src="js/editor.bundle.js"></script>
     <script src="js/temas.js"></script>
 </body>
+
 </html>
 <!-- Recursos Usados
 
@@ -143,5 +184,3 @@ pantallaRespuestaB.getAttribute('respuesta')
 
 
 -->
-
-
