@@ -2,9 +2,6 @@ const formulario = document.getElementById("formularioEstudioMercado");
 const campos = formulario.querySelectorAll("input, textarea");
 const botonEnviar = formulario.querySelector(".enviar");
    
-
-
-    
 //Se comprueba si el Formulario esta enviado comprobando el LocalStorage
 if(cargarLocalStorage("formularioEnviado")){
     mensajeAgradecimiento();
@@ -54,8 +51,14 @@ function mensajeAgradecimiento() {
     mensajeContainer.innerHTML = `
         <h2>Ya hemos recibido tu formulario</h2>
         <p>¡Muchas gracias por darnos tu opinión!</p>
+        <a href="#" class="btnModal cerrar btnCerrarModal">Cerrar</a>
     `;
     formulario.parentNode.appendChild(mensajeContainer);
+    const btnCerrarModal = document.querySelector(".btnCerrarModal");
+    btnCerrarModal.addEventListener('click', (e)=>{
+        e.preventDefault();
+        modal.classList.remove('modal--show');
+    });
 }
 
 function setDatosFirebase(fecha,situacionActual,usabilidad,comentarios) {
