@@ -22,6 +22,7 @@
     "@rollup/plugin-commonjs": "^25.0.0",
     "@uiw/codemirror-theme-xcode": "^4.20.2",
     "codemirror": "^6.0.1",
+    "firebase": "^9.22.2",
     "sass": "^1.62.1"
   },
   "devDependencies": {

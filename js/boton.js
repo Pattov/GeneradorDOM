@@ -39,6 +39,7 @@ function IconoCopiar() {
   // Se Elimina el elemento de entrada de texto del DOM
   document.body.removeChild(textArea);
 }
+
 // 2023
 function IconoBorrar() {
   icono.style.display = "none";

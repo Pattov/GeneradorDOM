@@ -6,6 +6,7 @@ const closeModal = document.querySelector('.cerrar');
 openModalTest.addEventListener('click', (e)=>{
     e.preventDefault();
     modal.classList.add('modal--show');
+    
 });
 openModalGuia.addEventListener('click', (e)=>{
     e.preventDefault();

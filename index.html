@@ -22,6 +22,10 @@
 
     <script src="https://unpkg.com/@babel/runtime@7.15.4/helpers/extends.js"></script>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  
 </head>
 
 <body>
@@ -75,10 +79,10 @@
     <!-- V E N T A N A   M O D A L  -->
     <section class="modal test">
         <div class="contenedorModal">
-            <form>
+            <form id="formularioEstudioMercado">
                 <h2 class="tituloModal">Manda tu opinión</h2>
                 <div class="contenedorCampo">
-                    <label>Situación Actual</label>
+                    <label>Situación Actual *</label>
                     <div class="campo">
                         <div class="opcion">
                             <input name="situacionLaboral" id="slTrabajar" type="radio" value="trabajar">
@@ -89,38 +93,39 @@
                             <label for="slEstudiar">Estudiando</label>
                         </div>
                         <div class="opcion">
-                            <input name="situacionLaboral" id="slNinguno" type="radio"  value="ambos">
-                            <label for="slNinguno">Ninguno</label>
+                            <input name="situacionLaboral" id="slAmbos" type="radio"  value="ambos">
+                            <label for="slAmbos">Ambos</label>
                         </div>
                     </div>
                 </div>
                 <div class="contenedorCampo">
-                    <label>¿Usarías la aplicación?</label>
+                    <label>¿Usarías la aplicación? *</label>
                     <div  class="campo">
                         <div class="opcion">
-                            <input name="usabilidad" id="usabilidadSi" type="radio" value="SI">
+                            <input name="usabilidad" id="usabilidadSi" type="radio" value="true">
                             <label for="usabilidadSi">Si</label>
                         </div>
                         <div class="opcion">
-                            <input name="usabilidad" id="usabilidadNo" type="radio" value="NO">
+                            <input name="usabilidad" id="usabilidadNo" type="radio" value="false">
                             <label for="usabilidadNo">No</label>
                         </div>
                     </div>
                 </div>
                 <div class="contenedorCampo">
-                    <label for="textarea">¿Qué te gustaría comentar?</label>
+                    <label for="textarea">¿Qué te gustaría comentar? *</label>
                     <textarea id="textarea" name="textarea" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="botones">
-                    <a href="#" class="btnModal enviar">Enviar</a>
+                    <a href="#" class="btnModal enviar disabled">Enviar</a>
                     <a href="#" class="btnModal cerrar">Cerrar</a>
                 </div>
             </form>
         </div>
     </section>
+    <script src="js/localStorage.js"></script>
+    <script src="js/formulario.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/boton.js"></script>
-    <script src="js/localStorage.js"></script>
     <script src="js/editor.bundle.js"></script>
     <script src="js/temas.js"></script>
 </body>

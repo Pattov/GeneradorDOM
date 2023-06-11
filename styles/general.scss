@@ -287,6 +287,7 @@ footer {
 ///////////////////////////////////////////////////////////////////
 
 .modal {
+  z-index: 5;
   position: fixed;
   top: 0;
   left: 0;
@@ -339,9 +340,6 @@ footer {
 form {
   display: flex;
   flex-direction: column;
-  > *:not(:last-child) {
-    flex-direction: column;
-  }
   .contenedorCampo {
     margin-bottom: 10px;
 
@@ -387,4 +385,11 @@ form {
     color: Colores(principalColor);
     background-color: Colores(principalClaro);
   }
+  
+}
+//deshabilita el boton enviar
+.enviar.disabled{
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
