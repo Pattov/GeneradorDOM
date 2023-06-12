@@ -57,7 +57,7 @@ function mensajeAgradecimiento() {
     const btnCerrarModal = document.querySelector(".btnCerrarModal");
     btnCerrarModal.addEventListener('click', (e)=>{
         e.preventDefault();
-        modal.classList.remove('modal--show');
+        modalTest.classList.remove('modal--show');
     });
 }
 
