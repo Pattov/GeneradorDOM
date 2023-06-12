@@ -170,7 +170,7 @@ function createElement(objeto, padreActual = 'padre') {
       textJs += `${nombreVariable}.setAttribute (\"${propiedad}\",\"${objeto[propiedad]}\");\n`;
     }
   }
-  //creamos el arbol
+  // Crear el árbol
   textJs += `${padreActual}.appendChild(${nombreVariable})\n`
   return textJs
 }
