@@ -9,7 +9,7 @@ let select = document.getElementById("ejemplos");
 const iconoCopy = document.getElementById("icono");
 const iconoBorrar = document.getElementById('iconoBorrar');
 let textJs;
-let contador = 0, elementoAnterior = "padre", contadorElementosIguales = 1;
+let contador = 0, contadorElementosIguales = 1;
 let elementos = [];
 
 let editorJs = new EditorView({
@@ -117,7 +117,7 @@ function createObj(element) {
 function createJS(objectElements) {
   console.log(objectElements)
   objectElements.forEach(objChild => {
-    textJs += createElement(objChild)
+    textJs += createElement(objChild);    
   });
   return textJs;
 }
@@ -133,11 +133,11 @@ function SerializeHtml(text) {
 }
 
 
-function createElement(objeto) {
+function createElement(objeto, padreActual = 'padre') {
   let nombreVariable =  `C${objeto.nameElement}`;
-  //si no es la primera vez del array;
+  // Si no es la primera vez del array
   if(elementos.length != 0){
-    //Se compruebra el nombre nuevo no coincida con otro almacenado
+    // Se comprueba que el nombre nuevo no coincida con otro almacenado
     if(elementos.includes(nombreVariable)){
       nombreVariable = `C${objeto.nameElement}${contadorElementosIguales}`;
       contadorElementosIguales++;
@@ -145,12 +145,11 @@ function createElement(objeto) {
   }
   elementos.push(nombreVariable);
 
-
-  //creo elemento
+  // Crear elemento
   textJs =`const ${nombreVariable} = document.createElement('${objeto.nameElement.toLowerCase()}');\n`
-  //añadimos propiedades
+  
+  // Añadir propiedades
   for (const propiedad in objeto) {
-    
     if(propiedad ==="class"){
       textJs += `${nombreVariable}.classList.add('${objeto.class}');\n`;
     }else if(propiedad ==="textElement"){
@@ -162,7 +161,7 @@ function createElement(objeto) {
     }else if(propiedad==="children"){
       if(objeto[propiedad].length > 0){
         objeto[propiedad].forEach(objChild => {
-          textJs += createElement(objChild);
+          textJs += createElement(objChild, nombreVariable);
         });
       }
     }else if(propiedad==="nameElement"){
@@ -172,6 +171,6 @@ function createElement(objeto) {
     }
   }
   //creamos el arbol
-  textJs += `${elementoAnterior}.appendChild(${nombreVariable})\n`
+  textJs += `${padreActual}.appendChild(${nombreVariable})\n`
   return textJs
 }
