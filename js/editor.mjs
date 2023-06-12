@@ -9,7 +9,8 @@ let select = document.getElementById("ejemplos");
 const iconoCopy = document.getElementById("icono");
 const iconoBorrar = document.getElementById('iconoBorrar');
 let textJs;
-let contador = 0, elementoAnterior = "padre";
+let contador = 0, elementoAnterior = "padre", contadorElementosIguales = 1;
+let elementos = [];
 
 let editorJs = new EditorView({
   extensions: [basicSetup, javascript(), xcodeDark, EditorView.editable.of(false)],
@@ -32,6 +33,9 @@ let updateListenerExtension = EditorView.updateListener.of((update) => {
     if(iconoBorrar.style.display !="inline-block"){
       iconoBorrar.style.display= "inline-block";
     }
+    //EL array se inicia en 0 elementos y el contador de elementos repetidos se pone a 1;
+    contadorElementosIguales = 1;
+    elementos.splice(0,elementos.length);
   }
 });
 
@@ -130,19 +134,31 @@ function SerializeHtml(text) {
 
 
 function createElement(objeto) {
+  let nombreVariable =  `C${objeto.nameElement}`;
+  //si no es la primera vez del array;
+  if(elementos.length != 0){
+    //Se compruebra el nombre nuevo no coincida con otro almacenado
+    if(elementos.includes(nombreVariable)){
+      nombreVariable = `C${objeto.nameElement}${contadorElementosIguales}`;
+      contadorElementosIguales++;
+    }
+  }
+  elementos.push(nombreVariable);
+
+
   //creo elemento
-  textJs =`const C${objeto.nameElement} = document.createElement('${objeto.nameElement.toLowerCase()}');\n`
+  textJs =`const ${nombreVariable} = document.createElement('${objeto.nameElement.toLowerCase()}');\n`
   //añadimos propiedades
   for (const propiedad in objeto) {
     
     if(propiedad ==="class"){
-      textJs += `C${objeto.nameElement}.classList.add('${objeto.class}');\n`;
+      textJs += `${nombreVariable}.classList.add('${objeto.class}');\n`;
     }else if(propiedad ==="textElement"){
       if(objeto.textElement!=""){
-        textJs += `C${objeto.nameElement}.textContent('${objeto.textElement}');\n`;
+        textJs += `${nombreVariable}.textContent('${objeto.textElement}');\n`;
       }
     }else if(propiedad ==="visibility"){
-      textJs += `C${objeto.nameElement}.style.visibility = "visible";\n`;
+      textJs += `${nombreVariable}.style.visibility = "visible";\n`;
     }else if(propiedad==="children"){
       if(objeto[propiedad].length > 0){
         objeto[propiedad].forEach(objChild => {
@@ -152,10 +168,10 @@ function createElement(objeto) {
     }else if(propiedad==="nameElement"){
       continue;
     }else{
-      textJs += `C${objeto.nameElement}.setAttribute (\"${propiedad}\",\"${objeto[propiedad]}\");\n`;
+      textJs += `${nombreVariable}.setAttribute (\"${propiedad}\",\"${objeto[propiedad]}\");\n`;
     }
   }
   //creamos el arbol
-  textJs += `${elementoAnterior}.appendChild(C${objeto.nameElement})\n`
+  textJs += `${elementoAnterior}.appendChild(${nombreVariable})\n`
   return textJs
 }
