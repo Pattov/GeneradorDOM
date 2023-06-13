@@ -61,26 +61,21 @@ select.addEventListener("change", function() {
 
 function convertElementsToObj(elements) {
   let nuevosElementos = [];
+
   for (const element of elements.children) {
-    console.log(element.childElementCount)
     let obj = createObj(element);
-    //mirar hijos
-    if(element.hasChildNodes() && element.childElementCount!=0){
-      obj.children = [];
-      const children = element.childNodes;
-      console.log(children);
-      for (const child of children) {
-        if(child.nodeName!=="#text"){
-          console.log(child.childElementCount)
-          let objChild = createObj(child);
-          obj.children.push(objChild);
-        }
-      }
+
+    if (element.hasChildNodes() && element.childElementCount != 0) {
+      obj.children = convertElementsToObj(element);
     }
-    nuevosElementos.push(obj)
+
+    nuevosElementos.push(obj);
   }
-  return nuevosElementos
+
+  return nuevosElementos;
 }
+
+
 
 // //cada Elemento constara de 
 // let elemento = [
@@ -100,24 +95,53 @@ function convertElementsToObj(elements) {
 //     "TextElement": "hola",
 //   }
 // ]
-
 function createObj(element) {
-  console.log(element)
-    const elementNode = Object.create(null);
-    elementNode.nameElement = element.nodeName;
-    elementNode.textElement = element.firstChild.textContent !== null ? element.firstChild.textContent.trim() : " ";
-  
-    for (const attr of element.attributes) {
-      elementNode[attr.nodeName] = attr.nodeValue;
+  const elementNode = Object.create(null);
+  elementNode.nameElement = element.nodeName;
+  let nodeText = element.textContent.replace(/[\n\t]+/g, "").trim();
+  // let nodeText = element.textContent.trim();
+  let hijosText = '';
+  //Obtener el String de los hijos
+  if (element.childElementCount > 0) {
+    for (const child of element.children) {
+      hijosText += child.textContent.replace(/[\n\t]+/g, "").trim();
     }
-    return elementNode;
   }
+  hijosText = hijosText.replace(/[\n\t]+/g, "").trim();
+  if(nodeText === hijosText||nodeText===''){
+    elementNode.textElement = '';
+  }else{
+    elementNode.textElement = nodeText;
+  }
+  // Obtener atributos
+  if (element.attributes.length > 0) {
+    elementNode.attributes = {};
+    for (const attr of element.attributes) {
+      elementNode.attributes[attr.nodeName] = attr.nodeValue;
+    }
+  }
+
+  // Obtener hijos
+  if (element.childElementCount > 0) {
+    elementNode.children = [];
+    for (const child of element.children) {
+      if (child.nodeType === Node.ELEMENT_NODE) {
+        elementNode.children.push(createObj(child));
+      }
+    }
+  }
+  
+  return elementNode;
+}
+
+
+
 
 
 function createJS(objectElements) {
   console.log(objectElements)
   objectElements.forEach(objChild => {
-    textJs += createElement(objChild);    
+    textJs += createElement(objChild);  
   });
   return textJs;
 }
@@ -145,32 +169,40 @@ function createElement(objeto, padreActual = 'padre') {
   }
   elementos.push(nombreVariable);
 
+  
   // Crear elemento
   textJs =`const ${nombreVariable} = document.createElement('${objeto.nameElement.toLowerCase()}');\n`
   
   // Añadir propiedades
   for (const propiedad in objeto) {
-    if(propiedad ==="class"){
-      textJs += `${nombreVariable}.classList.add('${objeto.class}');\n`;
+    if(propiedad==="attributes"){
+      for (const atributo in objeto[propiedad]) {
+        const valorAtributo = objeto[propiedad][atributo];
+        if (atributo === "class") {
+          textJs += `\t${nombreVariable}.classList.add('${valorAtributo}');\n`;
+        } else if (atributo === "visibility") {
+          textJs += `\t${nombreVariable}.style.visibility = "visible";\n`;
+        } else {
+          textJs += `\t${nombreVariable}.setAttribute("${atributo}", "${valorAtributo}");\n`;
+        }
+      }
+    }else if(propiedad==="nameElement"){
+      continue;
     }else if(propiedad ==="textElement"){
       if(objeto.textElement!=""){
-        textJs += `${nombreVariable}.textContent('${objeto.textElement}');\n`;
+        textJs += `\t${nombreVariable}.textContent('${objeto.textElement}');\n`;
       }
-    }else if(propiedad ==="visibility"){
-      textJs += `${nombreVariable}.style.visibility = "visible";\n`;
     }else if(propiedad==="children"){
       if(objeto[propiedad].length > 0){
         objeto[propiedad].forEach(objChild => {
           textJs += createElement(objChild, nombreVariable);
         });
       }
-    }else if(propiedad==="nameElement"){
-      continue;
-    }else{
-      textJs += `${nombreVariable}.setAttribute (\"${propiedad}\",\"${objeto[propiedad]}\");\n`;
     }
   }
+  
   // Crear el árbol
-  textJs += `${padreActual}.appendChild(${nombreVariable})\n`
+  textJs += `${padreActual}.appendChild(${nombreVariable});\n`
+  
   return textJs
 }

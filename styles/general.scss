@@ -183,7 +183,10 @@ main {
     }
   }
 }
-
+//eliminar el dobleScroll
+.ͼ1 .cm-scroller{
+  overflow: hidden
+}
 //cabecera
 .encabezadoCuerpo {
   @include flex(center);
