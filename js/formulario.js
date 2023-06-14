@@ -16,10 +16,11 @@ if(cargarLocalStorage("formularioEnviado")){
             let situacionActualForm = document.querySelector('input[name="situacionLaboral"]:checked').value;
             let comentariosForm = document.getElementById('textarea').value;
             let usabilidadForm = document.querySelector('input[name="usabilidad"]:checked').value;
-                
-            // Realizar las acciones necesarias para enviar el formulario (puedes agregar el código para enviar los datos a Firebase aquí)
+            let precioForm = document.querySelector('input[name="pagar"]:checked').value;
+            let cantidadForm = document.querySelector('input[name="cantidad"]:checked').value
+            
             // Obtener los valores del formulario
-            setDatosFirebase(fechaForm,situacionActualForm,usabilidadForm,comentariosForm)
+            setDatosFirebase(fechaForm,situacionActualForm,usabilidadForm,comentariosForm, precioForm, cantidadForm)
             // Guardar en localStorage que el formulario ha sido enviado
             guardarLocalStorage("formularioEnviado", true);
             mensajeAgradecimiento();
@@ -61,7 +62,7 @@ function mensajeAgradecimiento() {
     });
 }
 
-function setDatosFirebase(fecha,situacionActual,usabilidad,comentarios) {
+function setDatosFirebase(fecha,situacionActual,usabilidad,comentarios,precio,cantidad) {
     
     // Configuración de GeneradorDom Firebase
     var firebaseConfig = {
@@ -85,7 +86,9 @@ function setDatosFirebase(fecha,situacionActual,usabilidad,comentarios) {
         creado: fecha,
         situacionLaboral: situacionActual,
         isUsabilidad: usabilidad,
-        Comentario: comentarios
+        Comentario: comentarios,
+        pagar: precio,
+        cantidad: cantidad
     };
 
     // Guardar los valores en Firestore
