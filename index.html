@@ -78,16 +78,26 @@
     </footer>
     <!-- V E N T A N A   M O D A L  -->
     <section class="modal mGuia">
+        
         <div class="contenedorModal">
             <h2 class="tituloModal">Guia</h2>
+            <!-- <input type="radio" name="switch" id="i_1" checked>
+            <input type="radio" name="switch" id="i_2">
+            <input type="radio" name="switch" id="i_3"> -->
+            <img src="https://blog.logrocket.com/wp-content/uploads/2023/01/7-result-update-component-state-dom-changed-text.gif" alt="" srcset="">
             <a href="#" class="btnModal cerrar guia">Cerrar</a>
         </div>
+        <!-- <div class="controls">
+            <label for="i_1">⬤</label>
+            <label for="i_2">⬤</label>
+            <label for="i_3">⬤</label>
+          </div> -->
     </section>
 
     <section class="modal mTest">
         <div class="contenedorModal">
             <form id="formularioEstudioMercado">
-                <h2 class="tituloModal">Manda tu opinión</h2>
+                <h3 class="tituloModal">Manda tu opinión</h3>
                 <div class="contenedorCampo">
                     <label>Situación Actual *</label>
                     <div class="campo">
@@ -119,8 +129,42 @@
                     </div>
                 </div>
                 <div class="contenedorCampo">
+                    <label>¿Pagarías por usar la Aplicación? *</label>
+                    <div  class="campo">
+                        <div class="opcion">
+                            <input name="pagar" id="pagarSi" type="radio" value="true">
+                            <label for="pagarSi">Si</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="pagar" id="pagarNo" type="radio" value="false">
+                            <label for="pagarNo">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedorCampo">
+                    <label>¿Cuanto estarias dispuesto a pagar como pago único? *</label>
+                    <div  class="campo">
+                        <div class="opcion">
+                            <input name="cantidad" id="pagarNada" type="radio" value="0">
+                            <label for="pagarNada">0€</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="cantidad" id="pagarPoco" type="radio" value="5">
+                            <label for="pagarPoco">5€</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="cantidad" id="pagarAlgo" type="radio" value="10">
+                            <label for="pagarAlgo">10€</label>
+                        </div>
+                        <div class="opcion">
+                            <input name="cantidad" id="pagarMucho" type="radio" value="15">
+                            <label for="pagarMucho">15€</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="contenedorCampo">
                     <label for="textarea">¿Qué te gustaría comentar? *</label>
-                    <textarea id="textarea" name="textarea" rows="5" class="form-control"></textarea>
+                    <textarea id="textarea" name="textarea" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="botones">
                     <a href="#" class="btnModal enviar disabled">Enviar</a>
