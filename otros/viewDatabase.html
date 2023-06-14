@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabla de datos de Firestore</title>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <style>
+    #tabla-datos {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    #tabla-datos th, #tabla-datos td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    #tabla-datos th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    #tabla-datos tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  
+    #tabla-datos tbody tr:hover {
+      background-color: #eaeaea;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>Tabla de datos de Firestore</h1>
+
+  <table id="tabla-datos">
+    <thead>
+      <tr>
+        <th>Creado</th>
+        <th>Situación Laboral</th>
+        <th>Usabilidad</th>
+        <th>Comentario</th>
+        <th>Pagarias</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    var firebaseConfig = {
+      // Configuración de GeneradorDom Firebase
+      apiKey: "AIzaSyC0SvehFakjZE0FvwqBejgPuvXHQdU9G4k",
+      authDomain: "generadordom-cc9bd.firebaseapp.com",
+      projectId: "generadordom-cc9bd",
+      storageBucket: "generadordom-cc9bd.appspot.com",
+      messagingSenderId: "989754279675",
+      appId: "1:989754279675:web:648b80e2b4b0d7aedb125e"
+    };
+
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Obtiene una referencia a la colección de Firestore que se desea mostrar
+    var db = firebase.firestore();
+    var collectionRef = db.collection('Users');
+    // Obtiene una referencia al elemento tbody de la tabla
+    var tbody = document.querySelector('#tabla-datos tbody');
+    
+    // Obtiene los datos de Firestore y muestra en la tabla
+    collectionRef.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // Obtiene los datos de cada documento
+        var data = doc.data();
+        // Crea una nueva fila en la tabla
+        var row = document.createElement('tr');
+
+        // Convierte el campo "creado" a una fecha legible
+        var timestamp = new Date(data.creado.seconds * 1000);
+        var fecha = timestamp.toLocaleDateString();
+        var hora = timestamp.toLocaleTimeString();
+
+        // Crea las celdas y asigna los valores de los datos
+        var creadoCell = document.createElement('td');
+        creadoCell.textContent = fecha + " " + hora;;
+        row.appendChild(creadoCell);
+
+        var situacionLaboralCell = document.createElement('td');
+        situacionLaboralCell.textContent = data.situacionLaboral;
+        row.appendChild(situacionLaboralCell);
+
+        var usabilidadCell = document.createElement('td');
+        usabilidadCell.textContent = data.isUsabilidad;
+        row.appendChild(usabilidadCell);
+
+        var comentarioCell = document.createElement('td');
+        comentarioCell.textContent = data.Comentario;
+        row.appendChild(comentarioCell);
+
+        var precioCell = document.createElement('td');
+        precioCell.textContent = data.pagar;
+        row.appendChild(precioCell);
+
+        var cantidadCell = document.createElement('td');
+        cantidadCell.textContent = data.cantidad;
+        row.appendChild(cantidadCell);
+        // Agrega la fila a la tabla
+        tbody.appendChild(row);
+      });
+    });
+  </script>
+</body>
+</html>
