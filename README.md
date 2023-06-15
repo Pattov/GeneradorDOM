@@ -1,12 +1,12 @@
 # Generador Dom
 
-## Documentation
+## Indice
 
-* [Installation](#installation)
+* [Instalación](#instalacion)
 * [Getting Started](#getting-started)
 * [Structure](#structure)
 
-## 💾Installation
+## 💾Instalación
 
 ```bash
 composer require konekt/menu
