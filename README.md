@@ -4,7 +4,8 @@
 
 * [Installation](#installation)
 * [Getting Started](#getting-started)
-* 
+* [Structure](#structure)
+
 ## 💾Installation
 
 ```bash
