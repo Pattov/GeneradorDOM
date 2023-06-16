@@ -1,17 +1,17 @@
 # 📜Indice 
 
-* [Estructura](#estructura)
+* [Estructura](#estructura-del-directorio)
 * [General](#general)
-* [Fichero a Fichero]
-  * [boton.js]
-  * [editor.mjs]
-  * [formulario.js]
-  * [localStorage.js]
-  * [modal.js]
-  * [temas.js] 
+* [Fichero a Fichero](#fichero-a-fichero)
+  * [boton.js](#botonjs)
+  * [editor.mjs](#editorjs)
+  * [formulario.js](#formulariojs)
+  * [localStorage.js](#localstoragejs)
+  * [modal.js](#modaljs)
+  * [temas.js](#temasjs)
 
 
-## 🗃️Estructura del directorio
+## Estructura del directorio
 ```
 ├── js/
 │  ├──boton.js
@@ -33,14 +33,14 @@ Casi todos los ficheros siguen la misma estructura
 
 ## 📋Fichero a Fichero
 
-###boton.js
+### boton.js
 
-###editor.mjs
+### editor.mjs
 
-###formulario.js
+### formulario.js
 
-###localStorage.js
+### localStorage.js
 
-###modal.js
+### modal.js
 
-###temas.js
+### temas.js
