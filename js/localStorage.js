@@ -4,16 +4,16 @@ let language;
 /**
  * Funcion que sirve para Guardar el LocalStorage
  *
- * @param {*} key string como se guarda la variable 
- * @return {*} el LocalStorage
+ * @param {string} key string como se guarda la variable 
+ * @return {string} el LocalStorage
  */
 function cargarLocalStorage (key) {
     return LOCALSTORAGE.getItem(key);
 }
 /**
  * Funcion que sirve para Guardar el LocalStorage
- * @param {*} key string como se guarda la variable 
- * @param {*} valor valor de la variable
+ * @param {string} key string como se guarda la variable 
+ * @param {string} valor valor de la variable
  */
 function guardarLocalStorage (key, valor) {
     LOCALSTORAGE.setItem(key, valor);
