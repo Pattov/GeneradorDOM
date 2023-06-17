@@ -40,8 +40,7 @@ Lógica de los botones de acción (Copiar y borrar)
 Este fichero tiene todo lo relacionado con los editores de código que se implementa con CodeMirror.
 
 Para ejecutar el código y que rollup compile el codigo usar: 
-```
-bash
+```bash
 npm run codeMirror
 ```
 Los archivos importantes para que esto funcione son los ficheros ```package.json``` y ```rollup.config.mjs```
