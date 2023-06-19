@@ -411,3 +411,41 @@ h3{
   cursor: not-allowed;
 }
 
+///////////////////////////////////////////////////////////////////
+// G U I A  -  S L I D E R
+///////////////////////////////////////////////////////////////////
+.mGuia {
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: block;
+  }
+  label {
+    color: Colores(secundarioGris);
+    transition-duration: .6s;
+    cursor: pointer;
+  }
+}
+.pagina{
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+#i_1:checked ~ .contenido .pagina1,
+#i_2:checked ~ .contenido .pagina2,
+#i_3:checked ~ .contenido .pagina3 {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+#i_1:checked ~ .controles label[for="i_1"],
+#i_2:checked ~ .controles label[for="i_2"],
+#i_3:checked ~ .controles label[for="i_3"] {
+  color: #424242;
+}
+
