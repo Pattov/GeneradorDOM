@@ -338,18 +338,6 @@ footer {
   }
 }
 
-#i_1:checked ~ .wrapper .content1,
-#i_2:checked ~ .wrapper .content2,
-#i_3:checked ~ .wrapper .content3 {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#i_1:checked ~ .controls label[for="i_1"],
-#i_2:checked ~ .controls label[for="i_2"],
-#i_3:checked ~ .controls label[for="i_3"] {
-  color: Colores(principalColor);
-}
 form {
   display: flex;
   flex-direction: column;
@@ -419,7 +407,7 @@ h3{
     opacity: 0;
     width: 0;
     height: 0;
-    display: block;
+    position: absolute;
   }
   label {
     color: Colores(secundarioGris);
@@ -435,6 +423,7 @@ h3{
   max-height: 90vh;
   overflow-y: auto;
 }
+
 #i_1:checked ~ .contenido .pagina1,
 #i_2:checked ~ .contenido .pagina2,
 #i_3:checked ~ .contenido .pagina3 {
@@ -448,4 +437,3 @@ h3{
 #i_3:checked ~ .controles label[for="i_3"] {
   color: #424242;
 }
-
