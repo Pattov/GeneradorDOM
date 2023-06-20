@@ -79,27 +79,20 @@
     <!-- V E N T A N A   M O D A L  -->
     <section class="modal mGuia">
         <div class="contenedorModal">
-            <input type="radio" name="switch" id="i_1" checked>
-            <input type="radio" name="switch" id="i_2">
-            <input type="radio" name="switch" id="i_3">
-            <h3 class="tituloModal">Guía</h3>
-            <div class="contenido">
-                <div class="paginas">
-                    <div class="pagina pagina1">
-                        <img src="https://blog.logrocket.com/wp-content/uploads/2023/01/7-result-update-component-state-dom-changed-text.gif" alt="" srcset="">
-                    </div>
-                    <div class="pagina pagina2">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                    </div>
-                    <div class="pagina pagina3">
-                        <h2>1qqqqqqqqqqqqqqqqqq</h2>
-                    </div>
+           <h2>Guía</h2>
+            <div class="paginas">
+                <div id="pag1">
+                    <h4>¿Que se puede hacer en DOM?</h4>
+                    <p>Se puede seleccionar, modificar, eliminar o agregar de elementos en la página web.</p>
+                    <img src="https://blog.logrocket.com/wp-content/uploads/2023/01/7-result-update-component-state-dom-changed-text.gif">
                 </div>
+                <div id="pag2" class="ocultar">01</div>
+                <div id="pag3" class="ocultar">02</div>
             </div>
             <div class="controles">
-                <label for="i_1">⬤</label>
-                <label for="i_2">⬤</label>
-                <label for="i_3">⬤</label>
+                <div id="bola1" class="active" onclick="selectDiv(1)"></div>
+                <div id="bola2" onclick="selectDiv(2)"></div>
+                <div id="bola3" onclick="selectDiv(3)"></div>
             </div>
             <a href="#" class="btnModal cerrar guia">Cerrar</a>
         </div>

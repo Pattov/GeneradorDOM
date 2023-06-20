@@ -311,6 +311,7 @@ footer {
     --transition: transform 0.8s 0.8s;
   }
   .contenedorModal {
+    position: relative;
     margin: auto;
     width: 90%;
     max-width: 600px;
@@ -327,6 +328,7 @@ footer {
     @include tabletAndMobile{
       padding: 2em 1.5em;
     }
+
   }
 }
 
@@ -402,38 +404,62 @@ h3{
 ///////////////////////////////////////////////////////////////////
 // G U I A  -  S L I D E R
 ///////////////////////////////////////////////////////////////////
-.mGuia {
-  input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
+.mGuia{
+  place-items: center;
+  h2{
+    margin-bottom: 0;
   }
-  label {
-    color: Colores(secundarioGris);
-    transition-duration: .6s;
-    cursor: pointer;
+  .paginas{
+    width: 100%;
+    > div{
+      margin-bottom: 0;
+      width: 100%;
+      display: flex;
+      place-items: center;
+      flex-direction: column;
+      transition: all .3s;
+      &.ocultar{
+        display: none;
+      }
+      img{
+        width: 100%;
+      }
+    }
+  }
+  .controles{
+    bottom: 10%;
+    left: 50%;
+    display: flex;
+    z-index: 4;
+    > div{
+      height: 10px;
+      width: 10px;
+      background-color: Colores(principalOscuro);
+      opacity: .3;
+      margin-right: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      &.active{
+        opacity:1;
+      }
+      &:hover{
+        opacity: .7;
+      }
+    }
   }
 }
-.pagina{
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .6s;
-  max-height: 90vh;
-  overflow-y: auto;
+
+.in{
+  animation: fadein .5s ease 0s 1 normal forwards;
 }
-
-#i_1:checked ~ .contenido .pagina1,
-#i_2:checked ~ .contenido .pagina2,
-#i_3:checked ~ .contenido .pagina3 {
-  opacity: 1;
-  pointer-events: auto;
+@keyframes facein {
+  from{opacity: 0;}
+  to {opacity: 1;}
 }
-
-
-#i_1:checked ~ .controles label[for="i_1"],
-#i_2:checked ~ .controles label[for="i_2"],
-#i_3:checked ~ .controles label[for="i_3"] {
-  color: #424242;
+.out{
+  animation: fadeout .5s ease 0s 1 normal forwards;
+}
+@keyframes fadeout {
+  from{opacity: 1;}
+  from{opacity: 0;}
 }
