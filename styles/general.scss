@@ -424,6 +424,15 @@ h3{
       img{
         width: 100%;
       }
+      p{
+        margin-top: 0;
+        &.codigo{
+          color: purple;
+          background-color: Colores(secundarioGris);
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
     }
   }
   .controles{
