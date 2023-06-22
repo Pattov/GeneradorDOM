@@ -223,7 +223,7 @@ function createElement(objeto, padreActual = "padre") {
       continue;
     } else if (propiedad === "textElement") {
       if (objeto.textElement != "") {
-        textJs += `\t${nombreVariable}.textContent('${objeto.textElement}');\n`;
+        textJs += `\t${nombreVariable}.textContent='${objeto.textElement}';\n`;
       }
     } else if (propiedad === "children") {
       if (objeto[propiedad].length > 0) {
