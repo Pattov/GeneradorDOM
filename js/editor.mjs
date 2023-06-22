@@ -209,7 +209,7 @@ function createElement(objeto, padreActual = "padre") {
   // Añadir propiedades
   for (const propiedad in objeto) {
     if (propiedad === "attributes") {
-      for (const atributo in objeto[propiedad]) {
+      for (let atributo in objeto[propiedad]) {
         const valorAtributo = objeto[propiedad][atributo];
         if (atributo === "class") {
           textJs += `\t${nombreVariable}.classList.add('${valorAtributo}');\n`;
