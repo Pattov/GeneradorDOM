@@ -86,13 +86,35 @@
                     <p>Se puede seleccionar, modificar, eliminar o agregar de elementos en la página web.</p>
                     <img src="https://blog.logrocket.com/wp-content/uploads/2023/01/7-result-update-component-state-dom-changed-text.gif">
                 </div>
-                <div id="pag2" class="ocultar">01</div>
-                <div id="pag3" class="ocultar">02</div>
+                <div id="pag2" class="ocultar">
+                    <h4>¿No funciona tu proyecto?</h4>
+                    <p>Acuerdate de poner en el body del HTML</p>
+                    <p class="codigo">&lt;div id="padre"&gt;&lt;!-- Aquí se agregarán los elementos --&gt;&lt;/div&gt;</p>
+                    <p>En el JS // hay que obtener el elemento padre</p>
+                    <p class="codigo">const padre = document.getElementById("padre");</p>
+                </div>
+                <div id="pag3" class="ocultar">
+                    <h4>¿Como hacer un elemento invisible?</h4>
+                    <p><em>display: none</em> &rarr; desactiva el diseño de los elementos, evitando que se represente</p>
+                    <p class="codigo">elemento.style.display="none";</p>
+                    <p><em>visibility: hidden</em> &rarr; oculta los elementos sin cambiar su diseño</p>
+                    <p class="codigo">elemento.style.visibility="hidden";</p>
+                    <p><em>opacity: 0</em> &rarr; los elementos pasan a transparentes, pero se puede interactuar con ellos.</p>
+                    <p class="codigo">elemento.style.opacity="0";</p>
+                </div>
+                <div id="pag4" class="ocultar">
+                    <h4>¿Como hacer un Evento?</h4>
+                    <p>Tiene dos partes importantes, el nombre del evento y la funcion que maneja el evento</p>
+                    <p class="codigo"> padre.addEventListener("click", ()=>{ console.log("Hola");})</p>
+                    <p>Tambien se puede usar otras funciones como <em>removeEventListener()</em></p>
+                    <p>Hay otros eventos como de ratón (dblclick, mouseover, mouseout, mousedown y mouseup), de teclado (keydown, keyup y keypress), de formularios (submit, focus, blur y input) y de ventana (load, resize y scroll)</p>
+                </div>
             </div>
             <div class="controles">
                 <div id="bola1" class="active" onclick="selectDiv(1)"></div>
                 <div id="bola2" onclick="selectDiv(2)"></div>
                 <div id="bola3" onclick="selectDiv(3)"></div>
+                <div id="bola4" onclick="selectDiv(4)"></div>
             </div>
             <a href="#" class="btnModal cerrar guia">Cerrar</a>
         </div>
@@ -186,25 +208,3 @@
 </body>
 
 </html>
-<!-- Recursos Usados
-
-
-ayuda
-
-https://desarrolloweb.com/articulos/1236.php
-
-
-onclick="Cerrar()"
-addEventListener -> 
-
-pantallaRespuestaA.style.visibility = "hidden";
-pantallaRespuestaA.style.visibility = "visible";
-
-innerHTML
-
-
-pantallaRespuestaB.getAttribute('respuesta')
-
-
-
--->
