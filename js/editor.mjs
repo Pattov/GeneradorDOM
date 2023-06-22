@@ -215,7 +215,10 @@ function createElement(objeto, padreActual = "padre") {
           textJs += `\t${nombreVariable}.classList.add('${valorAtributo}');\n`;
         } else if (atributo === "visibility") {
           textJs += `\t${nombreVariable}.style.visibility = "visible";\n`;
-        } else {
+        } else if(atributo.startsWith("on")){
+          atributo = atributo.slice(2);
+          textJs += `\t${nombreVariable}.addEventListener("${atributo}", "${valorAtributo}");\n`;
+        }else{
           textJs += `\t${nombreVariable}.setAttribute("${atributo}", "${valorAtributo}");\n`;
         }
       }
